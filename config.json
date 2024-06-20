@@ -1,4 +1,12 @@
 {
+
   "prefix":"+",
-  "token":"Your Token"
+  "token":"YOUR TOKEN",
+  "guild_chat":"YOUR Guild chat",
+
+
+  "host":"YOUR IP OR DOMAINE",
+  "port":" YOUR PORT",
+  "version":"YOUR VERSION",
+  "username":"YOUR USERNAME"
 }

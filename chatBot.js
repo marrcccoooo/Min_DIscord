@@ -1,10 +1,13 @@
 const mineflayer = require("mineflayer");
 const bot = require('./bot.js');
+const { guild_chat, host, port, version, username } = require('./config.json');
+
+
 const chatbot = mineflayer.createBot({
-    host: 'NGACCPNV.aternos.me',
-    port: 15012,
-    version: '1.9.4',
-    username: 'ChatBot',
+    host: host,
+    port: port,
+    version: version,
+    username: username,
     auth: 'offline'
 });
 
@@ -13,7 +16,7 @@ chatbot.on('chat', (username, message) => {
     if (message.includes('@')) {
         message = message.replace(/@/g, '＠');
     }
-    bot.channels.cache.get('1253387874938650675').send(`${username}: ${message}`);
+    bot.channels.cache.get(guild_chat).send(`${username}: ${message}`);
 });
 
 

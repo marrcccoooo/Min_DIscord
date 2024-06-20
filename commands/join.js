@@ -12,7 +12,9 @@ module.exports = {
         if (!username) {
             return message.channel.send('Merci de spécifier un username de bot.');
         }
-
+        if (username === "all") {
+            return message.channel.send('Merci de spécifier un  autre username au bot.');
+        }
         bot = mineflayer.createBot({
             host: 'NGACCPNV.aternos.me',
             port: 15012,
@@ -25,7 +27,10 @@ module.exports = {
             console.log(`${username}: ${message}`);
         });
 
-        bot.on('kicked', (reason, loggedIn) => console.log(`Kicked: ${reason} ${loggedIn}`));
+        bot.on('kicked', (reason, loggedIn) => {
+            console.log(`Kicked: ${reason} ${loggedIn}`)
+            bots.splice(bots.indexOf(bot), 1);
+        });
         bot.on('error', (err) => console.log(`Error: ${err}`));
 
         message.channel.send(`Bot ${username} a rejoint le serveur Minecraft.`);

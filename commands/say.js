@@ -14,7 +14,12 @@ module.exports = {
         }
         if (!text) {
             return message.channel.send('Merci de spécifier un message.' + '\n +say <username> <message>');
-
+        }
+        if (username === 'all') {
+            for (let i = 0; i < bots.length; i++) {
+                bots[i].chat(text);
+            }
+            return message.channel.send(`Tous les bots ont envoyé le message ${text}`);
         }
         let botFound = false;
         for (let i = 0; i < bots.length; i++) {

@@ -2,7 +2,6 @@
   "name": "discord.js-bot-template",
   "version": "1.0.0",
   "description": "basic bot template with command handler",
-  "main": "bot.js",
   "dependencies": {
     "asynckit": "^0.4.0",
     "callsites": "^3.1.0",
@@ -28,7 +27,7 @@
     "ws": "^7.5.5"
   },
   "scripts": {
-    "start": "concurrently \"node bot.js\" \"node chatBot.js\"",
+    "start": "concurrently \"node chatBot.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

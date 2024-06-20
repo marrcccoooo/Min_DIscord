@@ -1,5 +1,6 @@
 const mineflayer = require("mineflayer");
-const bot = require('./bot.js');const chatbot = mineflayer.createBot({
+const bot = require('./bot.js');
+const chatbot = mineflayer.createBot({
     host: 'NGACCPNV.aternos.me',
     port: 15012,
     version: '1.9.4',
@@ -18,7 +19,5 @@ chatbot.on('chat', (username, message) => {
 
 setInterval(() => {
     chatbot.setControlState('jump',true);
-    setTimeout(() => {
-        chatbot.setControlState('jump',false);
-    },1000);
+    chatbot.setControlState('jump',false);
 },5*1000);

@@ -11,6 +11,13 @@ module.exports = {
         if (!username) {
             return message.channel.send('Merci de spécifier un username de bot.');
         }
+        if ( username === "all") {
+            for (let i = 0; i < bots.length; i++) {
+                bots[i].end();
+            }
+            bots.length = 0;
+            return message.channel.send(`Tous les bots ont quitté le serveur Minecraft`);
+        }
         let botFound = false;
         for (let i = 0; i < bots.length; i++) {
             if (bots[i].username === username) {

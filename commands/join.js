@@ -1,7 +1,5 @@
-// commands/join.js
 const mineflayer = require('mineflayer');
-let bot;
-const bots = require('../bots.js'); // import the bots array
+const bots = require('../bots.js');
 
 
 module.exports = {
@@ -14,7 +12,6 @@ module.exports = {
         if (!username) {
             return message.channel.send('Merci de spécifier un username de bot.');
         }
-
 
         bot = mineflayer.createBot({
             host: 'NGACCPNV.aternos.me',

@@ -33,7 +33,6 @@ commandSubFolders.forEach(folder => {
     }
 });
 
-// Load Event files from events folder
 const eventFiles = fs.readdirSync('./events/').filter(f => f.endsWith('.js'))
 
 for (const file of eventFiles) {
@@ -47,49 +46,22 @@ for (const file of eventFiles) {
     }
 }
 
-//Command Manager
 bot.on("messageCreate", async message => {
-    //Check if author is a bot or the message was sent in dms and return
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
 
-    //get prefix from config and prepare message so it can be read as a command
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
 
-    //Check for prefix
     if(!cmd.startsWith(prefix)) return;
 
-    //Get the command from the commands collection and then if the command is found run the command file
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
     if(commandfile) commandfile.run(bot,message,args);
 
 });
-
-//Token needed in config.json
 bot.login(token);
 
-const chatbot = mineflayer.createBot({
-    host: 'NGACCPNV.aternos.me',
-    port: 15012,
-    version: '1.9.4',
-    username: 'ChatBot',
-    auth: 'offline'
-});
 
-chatbot.on('chat', (username, message) => {
-    if (username === chatbot.username) return;
-    if (message.includes('@')) {
-        message = message.replace(/@/g, '＠');
-    }
-    bot.channels.cache.get('1253387874938650675').send(`${username}: ${message}`);
-});
+module.exports = bot;
 
-
-setInterval(() => {
-    chatbot.setControlState('jump',true);
-    setTimeout(() => {
-        chatbot.setControlState('jump',false);
-    },1000);
-},5*1000);
